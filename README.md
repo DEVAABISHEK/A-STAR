@@ -1,6 +1,6 @@
 <h1>ExpNo 4 : Implement A* search algorithm for a Graph</h1> 
-<h3>Name:       </h3>
-<h3>Register Number:           </h3>
+<h3>Name: DEVA ABISHEK P       </h3>
+<h3>Register Number: 212223110008          </h3>
 <H3>Aim:</H3>
 <p>To ImplementA * Search algorithm for a Graph using Python 3.</p>
 <H3>Algorithm:</H3>
@@ -117,3 +117,97 @@ G 0 <br>
 <h2>Sample Output</h2>
 <hr>
 Path found: ['A', 'E', 'D', 'G']
+
+## PROGRAM 
+```
+from collections import defaultdict
+
+H_dist = {}
+
+def aStarAlgo(start_node, stop_node):
+    open_set = {start_node}
+    closed_set = set()
+
+    g = {}
+    parents = {}
+
+    g[start_node] = 0
+    parents[start_node] = start_node
+
+    while len(open_set) > 0:
+        n = None
+
+        for v in open_set:
+            if n is None or g[v] + heuristic(v) < g[n] + heuristic(n):
+                n = v
+
+        if n is None:
+            print("Path does not exist!")
+            return None
+
+        if n == stop_node:
+            path = []
+
+            while parents[n] != n:
+                path.append(n)
+                n = parents[n]
+
+            path.append(start_node)
+            path.reverse()
+
+            print("Path found: {}".format(path))
+            return path
+
+        for (m, weight) in get_neighbors(n):
+
+            if m not in open_set and m not in closed_set:
+                open_set.add(m)
+                parents[m] = n
+                g[m] = g[n] + weight
+
+            else:
+                if g[m] > g[n] + weight:
+                    g[m] = g[n] + weight
+                    parents[m] = n
+
+                    if m in closed_set:
+                        closed_set.remove(m)
+                        open_set.add(m)
+
+        open_set.remove(n)
+        closed_set.add(n)
+
+    print("Path does not exist!")
+    return None
+
+
+def get_neighbors(v):
+    return Graph_nodes.get(v, [])
+
+
+def heuristic(n):
+    return H_dist[n]
+
+
+graph = defaultdict(list)
+
+n, e = map(int, input().split())
+
+for i in range(e):
+    u, v, cost = input().split()
+    cost = float(cost)
+    graph[u].append((v, cost))
+    graph[v].append((u, cost))
+
+for i in range(n):
+    node, h = input().split()
+    H_dist[node] = float(h)
+
+Graph_nodes = graph
+
+aStarAlgo('S', 'G')
+```
+## OUTPUT
+<img width="448" height="317" alt="image" src="https://github.com/user-attachments/assets/b3e6f716-a330-47b4-877a-3af3e584056f" />
+
+## RESULT
