@@ -2,7 +2,7 @@
 <h3>Name: DEVA ABISHEK P       </h3>
 <h3>Register Number: 212223110008          </h3>
 <H3>Aim:</H3>
-<p>To ImplementA * Search algorithm for a Graph using Python 3.</p>
+<p>To Implement A * Search algorithm for a Graph using Python 3.</p>
 <H3>Algorithm:</H3>
 
 ``````
@@ -211,3 +211,4 @@ aStarAlgo('S', 'G')
 <img width="448" height="317" alt="image" src="https://github.com/user-attachments/assets/b3e6f716-a330-47b4-877a-3af3e584056f" />
 
 ## RESULT
+ Thus the python3 program to implement the  A * Search algorithm for a Graph is executed successfully
